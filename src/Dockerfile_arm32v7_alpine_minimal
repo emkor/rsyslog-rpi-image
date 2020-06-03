@@ -1,0 +1,12 @@
+FROM arm32v7/alpine:3.12
+
+LABEL maintainer="emkor93@gmail.com"
+
+RUN apk update \
+  && apk add --no-cache rsyslog \
+  && rm -rf /var/cache/apk/*
+
+COPY rsyslog.conf /etc/rsyslog.conf
+EXPOSE 514
+VOLUME [ "/var/log", "/etc/rsyslog.d" ]
+CMD ["rsyslogd"]

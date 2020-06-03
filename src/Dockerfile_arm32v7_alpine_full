@@ -1,0 +1,48 @@
+FROM arm32v7/alpine:3.12
+
+LABEL maintainer="emkor93@gmail.com"
+
+RUN apk update \
+    && apk add --no-cache \
+    rsyslog \
+    rsyslog-clickhouse \
+    rsyslog-crypto \
+    rsyslog-dbg \
+    rsyslog-doc \
+    rsyslog-elasticsearch \
+    rsyslog-gssapi \
+    rsyslog-hiredis \
+    rsyslog-http \
+    rsyslog-imdocker \
+    rsyslog-mmanon \
+    rsyslog-mmaudit \
+    rsyslog-mmcount \
+    rsyslog-mmdblookup \
+    rsyslog-mmfields \
+    rsyslog-mmjsonparse \
+    rsyslog-mmnormalize \
+    rsyslog-mmpstrucdata \
+    rsyslog-mmrm1stspace \
+    rsyslog-mmsequence \
+    rsyslog-mmsnmptrapd \
+    rsyslog-mmutf8fix \
+    rsyslog-mysql \
+    rsyslog-openrc \
+    rsyslog-pgsql \
+    rsyslog-pmaixforwardedfrom \
+    rsyslog-pmlastmsg \
+    rsyslog-pmsnare \
+    rsyslog-rabbitmq \
+    rsyslog-relp \
+    rsyslog-snmp \
+    rsyslog-testing \
+    rsyslog-tls \
+    rsyslog-udpspoof \
+    rsyslog-uxsock \
+    rsyslog-zmq \
+    && rm -rf /var/cache/apk/*
+
+COPY rsyslog.conf /etc/rsyslog.conf
+EXPOSE 514
+VOLUME [ "/var/log", "/etc/rsyslog.d" ]
+CMD ["rsyslogd"]
