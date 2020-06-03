@@ -1,5 +1,5 @@
 # rsyslog-rpi-image
-Images containing rsyslog server for arm32v7 architecture, based off alpine image
+Alpine-based rsyslog server image for arm32v7 architecture (compatible with Raspberry Pi 3 or newer)
 
 Image comes in two variants:
 - `emkor/rsyslog-rpi:alpine3-full`: includes only rsyslog itself
